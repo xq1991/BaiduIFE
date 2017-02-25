@@ -1,0 +1,183 @@
+body{
+    margin: 0;
+    font-size: 14px;
+    background-color: #0E0E0E;
+}
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+#header, main, aside, footer{
+    width: 90%;
+    margin: 0 auto;
+}
+
+section{
+    margin: 0 20px 20px;
+    padding: 15px;
+    border: 1px solid #D9D9D9;
+    box-shadow: 2px 2px 2px #888888;
+    background-color: #FFFFFF;
+}
+
+h3{
+    margin: 10px 0;
+    color: #5D6363;
+    font-weight: normal;
+}
+/*header*/
+#header{
+    height: 60px;
+    background-color: #333333;
+}
+
+#header h1{
+    margin: 0;
+    float: left;
+}
+
+#header a{
+    display: block;
+    height: 60px;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+#header h1 img{
+    width: 130px;
+    height: 60px;
+    margin-left: 17px;
+}
+
+#header nav{
+    float: right;
+    height: 60px;
+}
+
+#header nav ul{
+    height: 60px;
+    margin: 0;
+    line-height: 60px;
+}
+
+#header nav li{
+    float: left;
+    margin-right: 20px;
+}
+
+/*main*/
+main{
+    padding: 20px 0;
+    background-color: #DEDEDE;
+}
+
+main section:last-child{
+    margin-bottom: 0;
+}
+
+main section:last-child p{
+    text-indent: 0;
+}
+
+main header span{
+    color: #9E918E;
+}
+
+main article p{
+    text-indent: 2em;
+}
+
+main article ul{
+    list-style: none;
+    padding-left: 20px;
+}
+
+main .img-list li{
+    margin-top: 20px; 
+    width: 120px;
+    text-align: center;
+    border: 1px solid #CCCCCC;
+}
+main .img-list li img{
+    width: 100px;
+    height: 100px;
+}
+
+main .img-list li p{
+    margin: 5px 0;
+    text-indent: 0;
+}
+main table{
+    width: 100%;
+    border-collapse:collapse;
+}
+
+main table td{
+    padding: 3px;
+    border: 1px solid #CCCCCC;
+}
+
+main table thead {
+    color: #FFFFFF;
+    background-color: #333333;
+}
+
+main table tfoot{
+    font-weight: bold;
+    background-color: #CCCCCC;
+}
+/*aside*/
+aside{
+    padding-bottom: 10px;
+    background-color: #DEDEDE;
+}
+
+aside h2{
+    margin-top: 0;
+    padding: 10px;
+    font-size: 18px;
+    border-left: 3px solid #CCCCCC;
+}
+
+aside form .input-box{
+    margin: 10px 0;
+}
+
+aside form .input-box-left{
+    width: 400px;
+    float: left;
+    text-align: right;
+}
+aside form .input-box-right{
+    float: left;
+}
+
+aside form .input-box-right p{
+    margin: 5px 0;
+    color: #CCCCCC;
+}
+
+aside form button{
+    padding: 5px 0;
+    width: 100%;
+    color: #FFFFFF;
+    text-align: center;
+    border: none;
+    border-radius: 5px;
+    background-color: #3355D0;
+    cursor: pointer;
+}
+
+/*footer*/
+
+footer{
+    padding: 20px 0;
+    color: #FFFFFF;
+    text-align: center;
+    background-color: #000000;
+}
