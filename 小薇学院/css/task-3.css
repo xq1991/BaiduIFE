@@ -1,0 +1,81 @@
+body{
+    margin: 0;
+    font-size: 14px;
+}
+
+.clearfix::after{
+    content: "";
+    display: block;
+    clear: both;
+    height: 0;
+    overflow: hidden;
+    visibility: hidden;
+}
+
+.wrap{
+    width: 95%;
+    margin: 20px auto 0;
+    padding: 20px;
+    border: 1px solid #999999;
+    background-color: #EEEEEE;  
+}
+
+.left{
+    float: left;
+    width: 158px;
+    padding: 20px;
+    border: 1px solid #999999;
+    background-color: #FFFFFF;
+}
+
+.left .team-logo{
+    float: left;
+    padding: 22px 5px;
+    width: 68px;
+    height: 34px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #999999;
+    background-color: #DFDFDF;
+}
+
+.left p{
+    margin: 0 0 0 100px;
+}
+
+.right{
+    float: right;
+    width: 78px;
+    padding: 20px;
+    border: 1px solid #999999;
+    background-color: #FFFFFF;
+}
+
+.right ul{
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.right ul li{
+    margin-bottom: 20px;
+    padding: 22px 5px;
+    width: 68px;
+    height: 34px;
+    text-align: center;
+    font-size: 12px;
+    border: 1px solid #999999;
+    background-color: #DFDFDF;
+}
+
+.right ul li:last-child{
+    margin: 0;
+}
+
+.main{
+    padding: 0 20px;
+    margin-left: 220px;
+    margin-right: 140px;
+    border: 1px solid #999999;
+    background-color: #FFFFFF;
+}
