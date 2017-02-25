@@ -1,0 +1,37 @@
+html{
+    height: 100%;
+}
+
+body{
+    margin: 0;
+    height: 100%;
+}
+
+.wrap{
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    width: 400px;
+    height: 200px;
+    background-color: #CCCCCC;
+}
+
+.wrap div{
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    background-color: #FECA2F;
+}
+
+.wrap .left-top{
+    border-radius: 0 0 50px 0;
+}
+
+.wrap .right-bottom{
+    right: 0;
+    bottom: 0;
+    border-radius: 50px 0 0 0;
+}
