@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>任务二：零基础JavaScript编码（二）</title>
+</head>
+
+<body>
+    <h3>污染城市列表</h3>
+    <ul id="aqi-list"></ul>
+    <script>
+        var aqiData = [
+            ["北京", 90],
+            ["上海", 50],
+            ["福州", 10],
+            ["广州", 50],
+            ["成都", 90],
+            ["西安", 100]
+        ];
+        (function () {
+
+            /*
+            在注释下方编写代码
+            遍历读取aqiData中各个城市的数据
+            将空气质量指数大于60的城市显示到aqi-list的列表中
+            */
+            var aqiList = document.getElementById('aqi-list');
+            var aqiListInnerHTML = '';
+            aqiData.sort(function(a,b){
+                return a[1] < b[1];
+            });
+            for(var i = 0;i < aqiData.length;i++){
+                if(aqiData[i][1] > 60){
+                    aqiListInnerHTML += '<li>第' + (i + 1) + '名：' + aqiData[i][0] + ',' + aqiData[i][1] + '</li>';
+                }else{
+                    break;
+                }
+            }
+            aqiList.innerHTML = aqiListInnerHTML;
+        })();
+    </script>
+</body>
+
+</html>
