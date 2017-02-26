@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>任务四：基础JavaScript练习（一）</title>
+    <style>
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        
+        #arrayList {
+            margin: 10px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #arrayList li {
+            float: left;
+            margin-right: 10px;
+            padding: 5px 10px;
+            color: #FFFFFF;
+            background-color: #FF0000;
+            cursor: pointer;
+        }
+        
+        #delLeft {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="inputBox">
+        <input type="text" id="input">
+        <button id="addLeft">左侧入</button>
+        <button id="addRight">右侧入</button>
+        <button id="delLeft">左侧出</button>
+        <button id="delRight">右侧出</button>
+    </div>
+    <ul class="clearfix" id="arrayList">
+    </ul>
+    <script>
+        //用来存储数据的数组
+        var array = [];
+
+        //用来获取到input框的输入值
+        function getValue() {
+            var value = document.getElementById('input').value;
+            if (value == '' || isNaN(value)) {
+                alert('请输入正确的数值');
+            } else {
+                return (value - 0);//将字符串强制转换为数字
+            }
+        }
+
+        //四个button点击的处理函数
+        function buttonHandle(id) {
+            switch (id) {
+                case 'addLeft':
+                    getValue() && array.unshift(getValue()) && render();//getValue有正确的返回数值才会执行后面的添加到数组并且render到ul节点中。
+                    break;
+                case 'addRight':
+                    getValue() && array.push(getValue()) && render();
+                    break;
+                case 'delLeft':
+                    alert('已经在数组中删除数值' + array.shift());
+                    render()
+                    break;
+                case 'delRight':
+                    alert('已经在数组中删除数值' + array.pop());
+                    render();
+                    break;
+            }
+        }
+
+        //将array数组的数据输出到ul中
+        function render() {
+            var arrayList = document.getElementById('arrayList');
+            var html = '';
+            for (var i = 0; i < array.length; i++) {
+                html += '<li data-index="' + i + '">' + array[i] + '</li>';//特别给每一个li元素上加一个index值，方便直接点击元素时删除对应在数组位置中的数值。
+            }
+            arrayList.innerHTML = html;
+        }
+
+        //利用冒泡原理给button与每个li加上点击事件
+        function init() {
+            var inputBox = document.getElementById('inputBox');
+            var arrayList = document.getElementById('arrayList');
+            inputBox.addEventListener('click', function (e) {
+                buttonHandle(e.target.id);
+            });
+            arrayList.addEventListener('click', function (e) {
+                var index = parseInt(e.target.dataset.index);
+                array.splice(index, 1);
+                render();
+            });
+        }
+        init();
+    </script>
+</body>
+
+</html>
