@@ -80,7 +80,7 @@
                 for (var i = array.length; i < 60; i++) {
                     array.push(Math.floor(Math.random() * (101 - 10) + 10));//产生一个10～100范围内的随机数。
                 }
-            }else{
+            } else {
                 alert('已经填满60个数据了。')
             }
         }
@@ -166,7 +166,7 @@
             arrayList.addEventListener('click', function (e) {
                 var index = parseInt(e.target.dataset.index);
                 array.splice(index, 1);
-                render();
+                render(array);
             });
         }
         init();
