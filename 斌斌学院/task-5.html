@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>任务五：基础JavaScript练习（二）</title>
+    <style>
+        .clearfix::after {
+            content: "";
+            display: block;
+            clear: both;
+            height: 0;
+            overflow: hidden;
+            visibility: hidden;
+        }
+        
+        #arrayList {
+            display: flex;
+            align-items: flex-end;
+            margin: 10px 0 0;
+            padding: 0;
+            list-style: none;
+        }
+        
+        #arrayList li {
+            margin-right: 3px;
+            padding: 15px 3px;
+            font-size: 12px;
+            color: #FFFFFF;
+            vertical-align: bottom;
+            background-color: #FF0000;
+            cursor: pointer;
+        }
+        
+        #delLeft {
+            margin-left: 30px;
+        }
+        
+        #createData {
+            margin-left: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="inputBox">
+        <input type="text" id="input">
+        <button id="addLeft">左侧入</button>
+        <button id="addRight">右侧入</button>
+        <button id="delLeft">左侧出</button>
+        <button id="delRight">右侧出</button>
+        <button id="createData">产生测试数据补全60个</button>
+        <button id="bubbleSort">冒泡排序</button>
+        <button id="clearArray">清除数据</button>
+    </div>
+    <ul class="clearfix" id="arrayList">
+    </ul>
+    <script>
+        //用来存储数据的数组
+        var array = [];
+
+        //用来获取到input框的输入值
+        function getValue() {
+            if (array.length >= 60) {
+                alert(' 最多60个数据，不能再添加更多的数据了。');
+                return false;
+            }
+            var value = document.getElementById('input').value;
+            if (value == '' || isNaN(value) || parseInt(value) < 10 || parseInt(value) > 100) {
+                alert('请输入正确的数值(数值范围10-100)');
+                return false;
+            } else {
+                return (parseInt(value)); x
+            }
+        }
+
+        //产生测试数据
+        function createData() {
+            if (array.length < 60) {
+                for (var i = array.length; i < 60; i++) {
+                    array.push(Math.floor(Math.random() * (101 - 10) + 10));//产生一个10～100范围内的随机数。
+                }
+            }else{
+                alert('已经填满60个数据了。')
+            }
+        }
+
+        //冒泡排序
+        function bubbleSort() {
+            var tmp;
+            var sortActionCollect = [];
+            for (var i = 0; i < array.length; i++) {
+                for (var j = 0; j < array.length - 1 - i; j++) {
+                    if (array[j] > array[j + 1]) {
+                        tmp = array[j];
+                        array[j] = array[j + 1];
+                        array[j + 1] = tmp;
+                    }
+                    sortActionCollect.push(JSON.parse(JSON.stringify(array)));//这里将每一步的排序结果添加到记录数组中，一定要复制当前的排序数组结果才能添加进去(不然记录数组中的每一步都是已经排好顺序的)，所以这里使用了JSON方法来简单实现复制数组。
+                }
+            }
+            return sortActionCollect;
+        }
+
+        //输出排序过程
+        function renderSortAction(actionCollectArray) {
+            var i = 0;
+            var timer = setInterval(function () {
+                if (i < actionCollectArray.length) {
+                    render(actionCollectArray[i]);
+                    i++;
+                } else {
+                    clearInterval(timer);
+                }
+            }, 5);
+        }
+
+        //button点击的处理函数
+        function buttonHandle(id) {
+            switch (id) {
+                case 'addLeft':
+                    getValue() && array.unshift(getValue()) && render(array);//getValue有正确的返回数值才会执行后面的添加到数组并且render到ul节点中。
+                    break;
+                case 'addRight':
+                    getValue() && array.push(getValue()) && render(array);
+                    break;
+                case 'delLeft':
+                    alert('已经在数组中删除数值' + array.shift());
+                    render(array);
+                    break;
+                case 'delRight':
+                    alert('已经在数组中删除数值' + array.pop());
+                    render(array);
+                    break;
+                case 'createData':
+                    createData();
+                    render(array);
+                    break;
+                case 'bubbleSort':
+                    renderSortAction(bubbleSort());
+                    break;
+                case 'clearArray':
+                    array = [];
+                    render(array);
+                    break;
+            }
+        }
+
+        //将array数组的数据输出到ul中
+        function render(renderArray) {
+            var arrayList = document.getElementById('arrayList');
+            var html = '';
+            for (var i = 0; i < renderArray.length; i++) {
+                html += '<li style="height:' + renderArray[i] + 'px;" data-index="' + i + '">' + renderArray[i] + '</li>';//特别给每一个li元素上加一个index值，方便直接点击元素时删除对应在数组位置中的数值。
+            }
+            arrayList.innerHTML = html;
+        }
+
+        //利用冒泡原理给button与每个li加上点击事件
+        function init() {
+            var inputBox = document.getElementById('inputBox');
+            var arrayList = document.getElementById('arrayList');
+            inputBox.addEventListener('click', function (e) {
+                buttonHandle(e.target.id);
+            });
+            arrayList.addEventListener('click', function (e) {
+                var index = parseInt(e.target.dataset.index);
+                array.splice(index, 1);
+                render();
+            });
+        }
+        init();
+    </script>
+</body>
+
+</html>
